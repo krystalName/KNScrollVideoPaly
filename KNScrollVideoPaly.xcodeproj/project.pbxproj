@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02ACEA99D3AB334F0AC69F94 /* libPods-KNScrollVideoPaly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */; };
 		C2D07336201B056B0043CCCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D07335201B056B0043CCCF /* AppDelegate.m */; };
 		C2D07339201B056B0043CCCF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D07338201B056B0043CCCF /* ViewController.m */; };
 		C2D0733C201B056B0043CCCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D0733A201B056B0043CCCF /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273202896B4727AC4AC36D7F /* Pods-KNScrollVideoPaly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNScrollVideoPaly.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly.release.xcconfig"; sourceTree = "<group>"; };
+		3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNScrollVideoPaly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63FB99710A32B636DB786E06 /* Pods-KNScrollVideoPaly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNScrollVideoPaly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly.debug.xcconfig"; sourceTree = "<group>"; };
 		C2D07331201B056B0043CCCF /* KNScrollVideoPaly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNScrollVideoPaly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D07334201B056B0043CCCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2D07335201B056B0043CCCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02ACEA99D3AB334F0AC69F94 /* libPods-KNScrollVideoPaly.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F23B0B8BD38B19A6DED3EC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63FB99710A32B636DB786E06 /* Pods-KNScrollVideoPaly.debug.xcconfig */,
+				273202896B4727AC4AC36D7F /* Pods-KNScrollVideoPaly.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BFE0CF68D93BD35C4E760E35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C2D07328201B056B0043CCCF = {
 			isa = PBXGroup;
 			children = (
 				C2D07333201B056B0043CCCF /* KNScrollVideoPaly */,
 				C2D07332201B056B0043CCCF /* Products */,
+				0F23B0B8BD38B19A6DED3EC1 /* Pods */,
+				BFE0CF68D93BD35C4E760E35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2D07347201B056C0043CCCF /* Build configuration list for PBXNativeTarget "KNScrollVideoPaly" */;
 			buildPhases = (
+				80947086FB6B4400413E830A /* [CP] Check Pods Manifest.lock */,
 				C2D0732D201B056B0043CCCF /* Sources */,
 				C2D0732E201B056B0043CCCF /* Frameworks */,
 				C2D0732F201B056B0043CCCF /* Resources */,
+				853051545027C6AA13FD32E8 /* [CP] Embed Pods Frameworks */,
+				A6A4DECCCE990A714BB492DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80947086FB6B4400413E830A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		853051545027C6AA13FD32E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6A4DECCCE990A714BB492DE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C2D0732D201B056B0043CCCF /* Sources */ = {
@@ -276,6 +351,7 @@
 		};
 		C2D07348201B056C0043CCCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63FB99710A32B636DB786E06 /* Pods-KNScrollVideoPaly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -290,6 +366,7 @@
 		};
 		C2D07349201B056C0043CCCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 273202896B4727AC4AC36D7F /* Pods-KNScrollVideoPaly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
