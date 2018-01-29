@@ -61,6 +61,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C29B2944201F0D23000F23C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C29B2945201F0D24000F23C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C29B2946201F0D24000F23C6 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		C29B2947201F0D24000F23C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C2D07328201B056B0043CCCF = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +110,10 @@
 		C2D07333201B056B0043CCCF /* KNScrollVideoPaly */ = {
 			isa = PBXGroup;
 			children = (
+				C29B2944201F0D23000F23C6 /* Model */,
+				C29B2947201F0D24000F23C6 /* Resources */,
+				C29B2946201F0D24000F23C6 /* VC */,
+				C29B2945201F0D24000F23C6 /* View */,
 				C2D07334201B056B0043CCCF /* AppDelegate.h */,
 				C2D07335201B056B0043CCCF /* AppDelegate.m */,
 				C2D07337201B056B0043CCCF /* ViewController.h */,
