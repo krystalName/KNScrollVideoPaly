@@ -89,6 +89,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C29B2948201F0DA3000F23C6 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		C2D07328201B056B0043CCCF = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +117,7 @@
 		C2D07333201B056B0043CCCF /* KNScrollVideoPaly */ = {
 			isa = PBXGroup;
 			children = (
+				C29B2948201F0DA3000F23C6 /* Player */,
 				C29B2944201F0D23000F23C6 /* Model */,
 				C29B2947201F0D24000F23C6 /* Resources */,
 				C29B2946201F0D24000F23C6 /* VC */,
