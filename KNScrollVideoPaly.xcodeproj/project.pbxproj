@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02ACEA99D3AB334F0AC69F94 /* libPods-KNScrollVideoPaly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */; };
+		C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE14202042BF0024BF6B /* KNVideoSlider.m */; };
+		C26CFE18202042EE0024BF6B /* KNVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE17202042EE0024BF6B /* KNVideoPlayerView.m */; };
 		C2D07336201B056B0043CCCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D07335201B056B0043CCCF /* AppDelegate.m */; };
 		C2D07339201B056B0043CCCF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D07338201B056B0043CCCF /* ViewController.m */; };
 		C2D0733C201B056B0043CCCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D0733A201B056B0043CCCF /* Main.storyboard */; };
@@ -20,6 +22,10 @@
 		273202896B4727AC4AC36D7F /* Pods-KNScrollVideoPaly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNScrollVideoPaly.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly.release.xcconfig"; sourceTree = "<group>"; };
 		3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNScrollVideoPaly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FB99710A32B636DB786E06 /* Pods-KNScrollVideoPaly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNScrollVideoPaly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly.debug.xcconfig"; sourceTree = "<group>"; };
+		C26CFE13202042BF0024BF6B /* KNVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoSlider.h; sourceTree = "<group>"; };
+		C26CFE14202042BF0024BF6B /* KNVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNVideoSlider.m; sourceTree = "<group>"; };
+		C26CFE16202042EE0024BF6B /* KNVideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoPlayerView.h; sourceTree = "<group>"; };
+		C26CFE17202042EE0024BF6B /* KNVideoPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNVideoPlayerView.m; sourceTree = "<group>"; };
 		C2D07331201B056B0043CCCF /* KNScrollVideoPaly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KNScrollVideoPaly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D07334201B056B0043CCCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2D07335201B056B0043CCCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +98,10 @@
 		C29B2948201F0DA3000F23C6 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				C26CFE13202042BF0024BF6B /* KNVideoSlider.h */,
+				C26CFE14202042BF0024BF6B /* KNVideoSlider.m */,
+				C26CFE16202042EE0024BF6B /* KNVideoPlayerView.h */,
+				C26CFE17202042EE0024BF6B /* KNVideoPlayerView.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -258,8 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D07339201B056B0043CCCF /* ViewController.m in Sources */,
+				C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */,
 				C2D07344201B056C0043CCCF /* main.m in Sources */,
 				C2D07336201B056B0043CCCF /* AppDelegate.m in Sources */,
+				C26CFE18202042EE0024BF6B /* KNVideoPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
