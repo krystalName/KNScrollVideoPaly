@@ -7,6 +7,7 @@
 //
 
 #import "KNVideoSlider.h"
+#import "KNLayerDelegate.h"
 
 static CGFloat panDistance;
 
