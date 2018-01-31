@@ -11,7 +11,7 @@
 
 static CGFloat panDistance;
 
-@interface KNLayerDelegate : NSObject
+@interface KNLayerDelegate : NSObject<CALayerDelegate>
 
 @property (nonatomic, assign) CGFloat centerY;
 @property (nonatomic, assign) CGFloat lineWidth;

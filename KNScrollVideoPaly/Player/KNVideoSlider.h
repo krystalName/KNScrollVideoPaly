@@ -12,7 +12,7 @@
 ///滑动时候变化的block
 typedef void(^SliderValueChangeBlock)(KNVideoSlider *);
 ///滑动时第一次改变的Block
-typedef void(^SliderFinshChangeBlock)(KNVideoSlider *);
+typedef void(^SliderFinishChangeBlock)(KNVideoSlider *);
 ///拖动滑块时的block
 typedef void(^DraggingSliderBlock)(KNVideoSlider *);
 
@@ -37,6 +37,6 @@ typedef void(^DraggingSliderBlock)(KNVideoSlider *);
 
 
 @property(nonatomic, copy) SliderValueChangeBlock valueChangeBlock;
-@property(nonatomic, copy) SliderFinshChangeBlock finshChangeBlock;
+@property(nonatomic, copy) SliderFinishChangeBlock finishChangeBlock;
 @property(nonatomic, strong)DraggingSliderBlock draggingSliderBlock;
 @end
