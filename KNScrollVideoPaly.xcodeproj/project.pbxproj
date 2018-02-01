@@ -17,6 +17,7 @@
 		C2D0733E201B056B0043CCCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D0733D201B056B0043CCCF /* Assets.xcassets */; };
 		C2D07341201B056C0043CCCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D0733F201B056C0043CCCF /* LaunchScreen.storyboard */; };
 		C2D07344201B056C0043CCCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D07343201B056C0043CCCF /* main.m */; };
+		C2E205092023117A007CC85E /* KNScrollPlayVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E205082023117A007CC85E /* KNScrollPlayVideoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		C2D07340201B056C0043CCCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2D07342201B056C0043CCCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2D07343201B056C0043CCCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2E205072023117A007CC85E /* KNScrollPlayVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNScrollPlayVideoModel.h; sourceTree = "<group>"; };
+		C2E205082023117A007CC85E /* KNScrollPlayVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNScrollPlayVideoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 		C29B2944201F0D23000F23C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C2E205072023117A007CC85E /* KNScrollPlayVideoModel.h */,
+				C2E205082023117A007CC85E /* KNScrollPlayVideoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E205092023117A007CC85E /* KNScrollPlayVideoModel.m in Sources */,
 				C2D07339201B056B0043CCCF /* ViewController.m in Sources */,
 				C26CFE1B202075880024BF6B /* KNLayerDelegate.m in Sources */,
 				C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */,
