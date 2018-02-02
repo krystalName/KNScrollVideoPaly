@@ -65,6 +65,13 @@
     return _bgimg;
 }
 
-
+-(UIButton *)playButton{
+    if (!_playButton) {
+        _playButton = [[UIButton alloc]init];
+        [_playButton setImage:[UIImage imageNamed:@"CellPaly"] forState:UIControlStateNormal];
+        [_playButton sizeToFit];
+    }
+    return _playButton;
+}
 
 @end

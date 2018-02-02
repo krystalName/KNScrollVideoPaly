@@ -103,13 +103,6 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		C29B2947201F0D24000F23C6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		C29B2948201F0DA3000F23C6 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +139,6 @@
 			children = (
 				C29B2948201F0DA3000F23C6 /* Player */,
 				C29B2944201F0D23000F23C6 /* Model */,
-				C29B2947201F0D24000F23C6 /* Resources */,
 				C29B2946201F0D24000F23C6 /* VC */,
 				C29B2945201F0D24000F23C6 /* View */,
 				C2D07334201B056B0043CCCF /* AppDelegate.h */,
