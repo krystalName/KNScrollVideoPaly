@@ -44,4 +44,27 @@
 
 
 
+#pragma mark - 懒加载
+
+-(UIView *)videoBackView{
+    if (!_videoBackView) {
+        _videoBackView = [[UIView alloc]init];
+        _videoBackView.backgroundColor = [UIColor blackColor];
+    }
+    return _videoBackView;
+}
+
+
+-(UIImageView *)bgimg{
+    if (!_bgimg) {
+        _bgimg = [[UIImageView alloc]init];
+        [_bgimg setImage:[UIImage imageNamed:@"bgImage"]];
+        _bgimg.contentMode = UIViewContentModeScaleAspectFill;
+        _bgimg.backgroundColor = [UIColor clearColor];
+    }
+    return _bgimg;
+}
+
+
+
 @end
