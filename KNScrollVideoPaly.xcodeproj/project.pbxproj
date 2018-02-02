@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02ACEA99D3AB334F0AC69F94 /* libPods-KNScrollVideoPaly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */; };
 		C20BD9A22024154E00D5F1B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20BD9A12024154E00D5F1B5 /* ViewController.m */; };
+		C20BD9A520243EBC00D5F1B5 /* KNScrollPalyerVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20BD9A420243EBC00D5F1B5 /* KNScrollPalyerVideoCell.m */; };
 		C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE14202042BF0024BF6B /* KNVideoSlider.m */; };
 		C26CFE18202042EE0024BF6B /* KNVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE17202042EE0024BF6B /* KNVideoPlayerView.m */; };
 		C26CFE1B202075880024BF6B /* KNLayerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE1A202075880024BF6B /* KNLayerDelegate.m */; };
@@ -26,6 +27,8 @@
 		63FB99710A32B636DB786E06 /* Pods-KNScrollVideoPaly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNScrollVideoPaly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNScrollVideoPaly/Pods-KNScrollVideoPaly.debug.xcconfig"; sourceTree = "<group>"; };
 		C20BD9A02024154E00D5F1B5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C20BD9A12024154E00D5F1B5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C20BD9A320243EBC00D5F1B5 /* KNScrollPalyerVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNScrollPalyerVideoCell.h; sourceTree = "<group>"; };
+		C20BD9A420243EBC00D5F1B5 /* KNScrollPalyerVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNScrollPalyerVideoCell.m; sourceTree = "<group>"; };
 		C26CFE13202042BF0024BF6B /* KNVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoSlider.h; sourceTree = "<group>"; };
 		C26CFE14202042BF0024BF6B /* KNVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNVideoSlider.m; sourceTree = "<group>"; };
 		C26CFE16202042EE0024BF6B /* KNVideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoPlayerView.h; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 		C29B2945201F0D24000F23C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C20BD9A320243EBC00D5F1B5 /* KNScrollPalyerVideoCell.h */,
+				C20BD9A420243EBC00D5F1B5 /* KNScrollPalyerVideoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20BD9A520243EBC00D5F1B5 /* KNScrollPalyerVideoCell.m in Sources */,
 				C20BD9A22024154E00D5F1B5 /* ViewController.m in Sources */,
 				C2E205092023117A007CC85E /* KNScrollPlayVideoModel.m in Sources */,
 				C26CFE1B202075880024BF6B /* KNLayerDelegate.m in Sources */,
