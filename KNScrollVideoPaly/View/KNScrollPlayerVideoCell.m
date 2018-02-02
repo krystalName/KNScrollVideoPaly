@@ -6,10 +6,10 @@
 //  Copyright © 2018年 leesang. All rights reserved.
 //
 
-#import "KNScrollPalyerVideoCell.h"
+#import "KNScrollPlayerVideoCell.h"
 
 
-@interface KNScrollPalyerVideoCell()
+@interface KNScrollPlayerVideoCell()
 
 ///内容lLable
 @property (strong, nonatomic)  UILabel *contentLabel;
@@ -21,9 +21,11 @@
 @property (strong, nonatomic)  UILabel *nameLabel;
 ///讨论内容按钮
 @property (strong, nonatomic)  UIButton *commentButton;
+///喜欢按钮
 @property (strong, nonatomic)  UIButton *likeButton;
-@property (strong, nonatomic)  UIButton *shareButton;
+///背景图片
 @property (strong, nonatomic)  UIImageView *bgimg;
+///信息Lable
 @property (strong, nonatomic)  UILabel *infoLLab;
 
 
@@ -32,17 +34,14 @@
 @end
 
 
-@implementation KNScrollPalyerVideoCell
+@implementation KNScrollPlayerVideoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
+
 
 @end
