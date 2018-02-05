@@ -10,6 +10,7 @@
 		02ACEA99D3AB334F0AC69F94 /* libPods-KNScrollVideoPaly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3812A04663D24A80C45BA27C /* libPods-KNScrollVideoPaly.a */; };
 		C20BD9A22024154E00D5F1B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20BD9A12024154E00D5F1B5 /* ViewController.m */; };
 		C20BD9A520243EBC00D5F1B5 /* KNScrollPlayerVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20BD9A420243EBC00D5F1B5 /* KNScrollPlayerVideoCell.m */; };
+		C20FA52A20285A80004A337B /* KNScrollPlayerVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20FA52920285A80004A337B /* KNScrollPlayerVideoView.m */; };
 		C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE14202042BF0024BF6B /* KNVideoSlider.m */; };
 		C26CFE18202042EE0024BF6B /* KNVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE17202042EE0024BF6B /* KNVideoPlayerView.m */; };
 		C26CFE1B202075880024BF6B /* KNLayerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C26CFE1A202075880024BF6B /* KNLayerDelegate.m */; };
@@ -29,6 +30,8 @@
 		C20BD9A12024154E00D5F1B5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C20BD9A320243EBC00D5F1B5 /* KNScrollPlayerVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNScrollPlayerVideoCell.h; sourceTree = "<group>"; };
 		C20BD9A420243EBC00D5F1B5 /* KNScrollPlayerVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNScrollPlayerVideoCell.m; sourceTree = "<group>"; };
+		C20FA52820285A80004A337B /* KNScrollPlayerVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNScrollPlayerVideoView.h; sourceTree = "<group>"; };
+		C20FA52920285A80004A337B /* KNScrollPlayerVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNScrollPlayerVideoView.m; sourceTree = "<group>"; };
 		C26CFE13202042BF0024BF6B /* KNVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoSlider.h; sourceTree = "<group>"; };
 		C26CFE14202042BF0024BF6B /* KNVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNVideoSlider.m; sourceTree = "<group>"; };
 		C26CFE16202042EE0024BF6B /* KNVideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNVideoPlayerView.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 			children = (
 				C20BD9A320243EBC00D5F1B5 /* KNScrollPlayerVideoCell.h */,
 				C20BD9A420243EBC00D5F1B5 /* KNScrollPlayerVideoCell.m */,
+				C20FA52820285A80004A337B /* KNScrollPlayerVideoView.h */,
+				C20FA52920285A80004A337B /* KNScrollPlayerVideoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				C20BD9A22024154E00D5F1B5 /* ViewController.m in Sources */,
 				C2E205092023117A007CC85E /* KNScrollPlayVideoModel.m in Sources */,
 				C26CFE1B202075880024BF6B /* KNLayerDelegate.m in Sources */,
+				C20FA52A20285A80004A337B /* KNScrollPlayerVideoView.m in Sources */,
 				C26CFE15202042BF0024BF6B /* KNVideoSlider.m in Sources */,
 				C2D07344201B056C0043CCCF /* main.m in Sources */,
 				C2D07336201B056B0043CCCF /* AppDelegate.m in Sources */,
