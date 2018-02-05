@@ -21,8 +21,7 @@
 @property (strong, nonatomic)  UILabel *nameLabel;
 ///背景图片
 @property (strong, nonatomic)  UIImageView *bgimg;
-///信息Lable
-@property (strong, nonatomic)  UILabel *infoLLab;
+
 ///底部View;
 @property (strong, nonatomic)  UIView *bottomView;
 
@@ -32,15 +31,56 @@
 
 @implementation KNScrollPlayerVideoCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+#pragma mark - 初始化
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.videoBackView];
+        [self.videoBackView addSubview:self.bgimg];
+        [self.videoBackView addSubview:self.playButton];
+        [self.contentView addSubview:self.contentLabel];
+        [self.contentView addSubview:self.bottomView];
+        [self.bottomView addSubview:self.nameLabel];
+        [self.bottomView addSubview:self.headImageButton];
+        [self.contentView addSubview:self.topBlackView];
+
+    }
+    return self;
+}
+
+#pragma mark - 赋值
+-(void)SetCellValue{
+    
+    
+  
+}
+
+
+#pragma mark - 布局
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.videoBackView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.width.equalTo(self.contentView);
+        make.height.equalTo(@235);
+    }];
+    
+    [self.bgimg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.videoBackView);
+    }];
+    
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.videoBackView);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
 }
 
 
 
 
 #pragma mark - 懒加载
+
 
 -(UIView *)videoBackView{
     if (!_videoBackView) {
@@ -95,7 +135,27 @@
         _headImageButton = [[UIButton alloc]init];
         [_headImageButton setImage:[UIImage imageNamed:@"120"] forState:UIControlStateNormal];
         _headImageButton.contentMode = UIViewContentModeScaleAspectFill;
+        [_headImageButton sizeToFit];
     }
     return _headImageButton;
 }
+
+-(UILabel *)nameLabel{
+    if (!_nameLabel) {
+        _nameLabel = [[UILabel alloc]init];
+        _nameLabel.textColor = [UIColor whiteColor];
+        _nameLabel.font = [UIFont systemFontOfSize:13];
+        [_nameLabel sizeToFit];
+    }
+    return _nameLabel;
+}
+
+-(UIView *)topBlackView{
+    if (!_topBlackView) {
+        _topBlackView = [[UIView alloc]init];
+        _topBlackView.backgroundColor = [UIColor clearColor];
+    }
+    return _topBlackView;
+}
+
 @end

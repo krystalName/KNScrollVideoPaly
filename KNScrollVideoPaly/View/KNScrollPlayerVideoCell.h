@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
 #import "KNScrollPlayVideoModel.h"
 
 @protocol KNScrollPlayerDelegate<NSObject>
@@ -20,8 +21,6 @@
 
 ///滑动上去的时候。显示黑色背景颜色View;
 @property (nonatomic, strong) UIView *topBlackView;
-///第一次播放video的时候背景图片
-@property (nonatomic, strong) UIView*videoFirstImageView;
 
 @property (nonatomic, weak) id<KNScrollPlayerDelegate> delegate;
 ///视频背景View;
