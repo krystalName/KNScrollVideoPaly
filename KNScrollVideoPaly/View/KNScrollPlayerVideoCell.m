@@ -7,6 +7,7 @@
 //
 
 #import "KNScrollPlayerVideoCell.h"
+#import <UIImageView+WebCache.h>
 
 
 @interface KNScrollPlayerVideoCell()
@@ -16,7 +17,7 @@
 ///点击播放按钮
 @property (strong, nonatomic)  UIButton *playButton;
 ///头像按钮
-@property (strong, nonatomic)  UIButton *headImageButton;
+@property (strong, nonatomic)  UIImageView *headImageView;
 ///名字
 @property (strong, nonatomic)  UILabel *nameLabel;
 ///背景图片
@@ -40,7 +41,7 @@
         [self.contentView addSubview:self.contentLabel];
         [self.contentView addSubview:self.bottomView];
         [self.bottomView addSubview:self.nameLabel];
-        [self.bottomView addSubview:self.headImageButton];
+        [self.bottomView addSubview:self.headImageView];
         [self.contentView addSubview:self.topBlackView];
 
     }
@@ -54,6 +55,39 @@
   
 }
 
+///点击播放
+-(void)playClick:(UIButton *)sender
+{
+    [sender setSelected:!sender.isSelected];
+    
+    if ([self.delegate respondsToSelector:@selector(playClick:)]) {
+        [self.delegate playerButtonClick:sender];
+    }
+}
+
+
+#pragma mark - SBPlayerDelegate
+- (void)playerTapActionWithIsShouldToHideSubviews:(BOOL)isHide
+{
+    if ([self.delegate respondsToSelector:@selector(playerTapActionWithIsShouldToHideSubviews:)]) {
+        [self.delegate playerTapActionWithIsShouldToHideSubviews:isHide];
+    }
+}
+
+- (void)setRow:(NSInteger)row
+{
+    _row = row;
+    self.playButton.tag = 788+row;
+}
+
+
+-(void)setModel:(KNScrollPlayVideoModel *)model{
+    
+    _model = model;
+    [_bgimg sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"bgImage"]];
+    _nameLabel.text = model.title;
+    
+}
 
 #pragma mark - 布局
 
@@ -73,6 +107,29 @@
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.videoBackView);
         make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
+    
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.videoBackView.mas_bottom);
+        make.left.width.equalTo(self.contentView);
+        make.height.equalTo(@75);
+    }];
+    
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentLabel.mas_bottom);
+        make.left.width.equalTo(self.contentView);
+        make.height.equalTo(@40);
+    }];
+    
+    [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bottomView);
+        make.left.equalTo(self.bottomView).offset(10);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    
+    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bottomView);
+        make.left.equalTo(self.headImageView.mas_right).offset(10);
     }];
 }
 
@@ -106,6 +163,7 @@
         _playButton = [[UIButton alloc]init];
         [_playButton setImage:[UIImage imageNamed:@"CellPaly"] forState:UIControlStateNormal];
         [_playButton sizeToFit];
+        [_playButton addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playButton;
 }
@@ -115,7 +173,7 @@
         _contentLabel = [[UILabel alloc]init];
         _contentLabel.text = @"专家在线解密，一小时了解市场行情!/n10月20日，您绝对不能错过的价值万元教学您绝对不能错过的价值万元教学您绝对不能错过的价值万元教学全文";
         _contentLabel.textColor = [UIColor whiteColor];
-        _contentLabel.font = [UIFont systemFontOfSize:13];
+        _contentLabel.font = [UIFont systemFontOfSize:15];
         _contentLabel.backgroundColor = [UIColor blackColor];
         _contentLabel.numberOfLines = 0;
     }
@@ -130,14 +188,14 @@
     return _bottomView;
 }
 
--(UIButton *)headImageButton{
-    if (!_headImageButton) {
-        _headImageButton = [[UIButton alloc]init];
-        [_headImageButton setImage:[UIImage imageNamed:@"120"] forState:UIControlStateNormal];
-        _headImageButton.contentMode = UIViewContentModeScaleAspectFill;
-        [_headImageButton sizeToFit];
+-(UIImageView *)headImageView{
+    if (!_headImageView) {
+        _headImageView =[[UIImageView alloc]init];
+        [_headImageView setImage:[UIImage imageNamed:@"120"]];
+        _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [_headImageView sizeToFit];
     }
-    return _headImageButton;
+    return _headImageView;
 }
 
 -(UILabel *)nameLabel{
