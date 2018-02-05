@@ -22,11 +22,10 @@
 @property (nonatomic, strong) UIView *topBlackView;
 ///第一次播放video的时候背景图片
 @property (nonatomic, strong) UIView*videoFirstImageView;
-@property (nonatomic, weak) id<KNScrollPlayerDelegate> delegate;
 
+@property (nonatomic, weak) id<KNScrollPlayerDelegate> delegate;
 ///视频背景View;
 @property (nonatomic, strong) UIView *videoBackView;
-
 ///Row
 @property(nonatomic, assign) NSInteger row;
 ///model
