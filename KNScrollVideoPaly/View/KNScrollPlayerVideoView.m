@@ -49,6 +49,32 @@
 
 @implementation KNScrollPlayerVideoView
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initData];
+      
+
+    }
+    return self;
+}
+
+- (void)initData
+{
+    self.lastOrCurrentPlayIndex = 0;
+    self.lastOrCurrentLightIndex = 0;
+    self.lastPlayerCell = 0;
+}
+
+-(void)initView{
+    ///添加table
+    [self addSubview:self.tableView];
+    ///注册cell
+    [self.tableView registerClass:[KNScrollPlayerVideoCell class] forCellReuseIdentifier:NSStringFromClass([KNScrollPlayerVideoCell class])];
+    
+}
+
 //网络请求
 - (void)fetchVideoListData {
     
