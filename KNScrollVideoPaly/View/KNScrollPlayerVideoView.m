@@ -49,6 +49,37 @@
 
 @implementation KNScrollPlayerVideoView
 
+//网络请求
+- (void)fetchVideoListData {
+    
+    [self.dataArray removeAllObjects];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:videoListUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"%@", responseObject);
+        NSArray *dataArray = responseObject[@"VAP4BFR16"];
+        
+        for (NSMutableDictionary *dic in dataArray) {
+            KNScrollPlayVideoModel *model = [[KNScrollPlayVideoModel alloc] init];
+            model.cover = dic[@"cover"];
+            model.title = dic[@"title"];
+            model.video_Url = dic[@"mp4_url"];
+            model.isShouldToPlay = NO;
+            [self.dataArray addObject:model];
+            
+        }
+        [self.tableView reloadData];
+        
+        //设置初次播放
+        [self setStartTimeValue:0];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+
+
 
 #pragma mark - Getters & Setters
 - (UITableView *)tableView{
