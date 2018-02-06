@@ -167,7 +167,52 @@
     [self stopCurrentPlayingCell];
     
     //找出适合播放的并点亮
-//    [self filterShouldLightCellWithScrollDirection:self.isScrollDownward];
+    [self filterShouldLightCellWithScrollDirection:self.isScrollDownward];
+}
+
+
+
+#pragma mark - 明暗控制
+- (void)filterShouldLightCellWithScrollDirection:(BOOL)isScrollDownward{
+    
+    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastOrCurrentLightIndex inSection:0]];
+    cell.topBlackView.hidden = NO;
+    //顶部
+    if (self.tableView.contentOffset.y<=0) {
+        [self shouldLightCellWithShouldLightIndex:0];
+        self.lastOrCurrentLightIndex = 0;
+        return;
+    }
+    
+    //底
+    if (self.tableView.contentOffset.y+self.tableView.frame.size.height>=self.tableView.contentSize.height) {
+        //其他的已经暂停播放
+        [self shouldLightCellWithShouldLightIndex:self.dataArray.count-1];
+        self.lastOrCurrentLightIndex=self.dataArray.count-1;
+        return;
+    }
+    NSArray *cellsArray = [self.tableView visibleCells];
+    NSArray *newArray = nil;
+    if (!isScrollDownward) {
+        newArray = [cellsArray reverseObjectEnumerator].allObjects;
+    }else{
+        newArray = cellsArray;
+    }
+    [newArray enumerateObjectsUsingBlock:^(KNScrollPlayerVideoCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
+        //NSLog(@"合适的播放视频： %ld",(long)cell.row);
+        
+        CGRect rect = [cell.videoBackView convertRect:cell.videoBackView.bounds toView:self];
+        CGFloat topSpacing = rect.origin.y;
+        CGFloat bottomSpacing = self.frame.size.height-rect.origin.y-rect.size.height;
+        if (topSpacing>=-rect.size.height/3&&bottomSpacing>=-rect.size.height/3) {
+            if (self.lastOrCurrentPlayIndex==-1) {
+                self.lastOrCurrentLightIndex = cell.row;
+            }
+            *stop = YES;
+        }
+    }];
+    [self shouldLightCellWithShouldLightIndex:self.lastOrCurrentLightIndex];
+    
 }
 
 
