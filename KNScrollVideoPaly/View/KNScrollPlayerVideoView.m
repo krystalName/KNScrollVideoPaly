@@ -104,7 +104,123 @@
     }];
 }
 
+#pragma mark - KNScrollPlayVideoCellDelegate
 
+-(void)playerTapActionWithIsShouldToHideSubviews:(BOOL)isHide
+{
+    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastOrCurrentPlayIndex inSection:0]];
+}
+
+-(void)playerButtonClick:(UIButton *)sneder
+{
+    NSInteger row = sneder.tag - 788;
+    
+    if (row!=self.lastOrCurrentPlayIndex) {
+        [self stopVideoWithShouldToStopIndex:self.lastOrCurrentPlayIndex];
+        self.lastOrCurrentPlayIndex = row;
+        [self playVideoWithShouldToPlayIndex:self.lastOrCurrentPlayIndex];
+        self.lastOrCurrentLightIndex = row;
+        [self shouldLightCellWithShouldLightIndex:self.lastOrCurrentLightIndex];
+    }
+}
+
+
+#pragma make - 表格代理
+
+
+
+
+
+#pragma mark - 其他方法
+- (void)stopVideoWithShouldToStopIndex:(NSInteger)shouldToStopIndex{
+    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:shouldToStopIndex inSection:0]];
+    cell.topBlackView.hidden = NO;
+}
+
+- (void)shouldLightCellWithShouldLightIndex:(NSInteger)shouldLIghtIndex
+{
+    
+    KNScrollPlayerVideoCell *cell2 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:shouldLIghtIndex inSection:0]];
+    cell2.topBlackView.hidden = YES;
+}
+
+- (void)playVideoWithShouldToPlayIndex:(NSInteger)shouldToPlayIndex{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:shouldToPlayIndex inSection:0];
+    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:path];
+    [self cellPlay:cell];
+}
+
+
+-(void)cellPlay:(KNScrollPlayerVideoCell *)cell{
+    
+    if(self.dataArray.count<=0){
+        return;
+    }
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:cell.row inSection:0];
+    
+    __weak typeof(self) weakSelf = self;
+    __weak KNVideoPlayerView *beplayer = _player;
+    if (_player && cell.row == self.lastPlayerCell) {
+        return;
+    }
+    
+    [_player removeFromSuperview];
+    
+    _player = [[KNVideoPlayerView alloc] init];
+    _player.completedPlayingBlock = ^(KNVideoPlayerView *player) {
+        
+        NSLog(@"两个比较 %f%d",weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height,(int)weakSelf.tableView.contentSize.height );
+        
+        if (weakSelf.lastPlayerCell != weakSelf.dataArray.count-1) {
+            
+            if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height  == (int)weakSelf.tableView.contentSize.height ){
+                
+//                [weakSelf playNext];
+                
+            }else if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height + cellHeigh > (int)weakSelf.tableView.contentSize.height ){
+                
+                [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.tableView.contentSize.height  -weakSelf.tableView.frame.size.height) animated:YES];
+                
+                NSLog(@"滑动到最后一个视频 %f",weakSelf.tableView.contentSize.height  -weakSelf.tableView.frame.size.height);
+                
+            }else {
+                [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.tableView.contentOffset.y + cellHeigh ) animated:YES];
+                NSLog(@"滑动到下一个视频 %f",weakSelf.tableView.contentOffset.y + cellHeigh);
+            }
+        }
+        [beplayer setStatusBarHidden:NO];
+    };
+    
+    _player.slider.value = 0;
+    _player.videoUrl = cell.model.video_Url;// item.mp4_url;
+    [_player playerBindTableView:self.tableView currentIndexPath:path];
+    _player.frame = cell.videoBackView.bounds;
+    [_player.player play];
+    //在cell上加载播放器
+    [cell.contentView addSubview:_player];
+    
+    self.lastOrCurrentPlayIndex = cell.row;
+    self.lastPlayerCell = cell.row;
+    cell.topBlackView.hidden = YES;
+}
+
+///继续播放下一个
+-(void)playNext{
+    
+    //中部(找出可见cell中最合适的一个进行播放)
+    NSArray *cellsArray = [self.tableView visibleCells];
+    [self stopVideoWithShouldToStopIndex:self.lastPlayerCell];
+    
+    for (KNScrollPlayerVideoCell *cell in cellsArray) {
+        
+        if (cell.row == self.lastPlayerCell + 1) {
+            NSLog(@"播放下一个视频： %ld",(long)cell.row);
+            [self cellPlay:cell];
+            break;
+        }
+    }
+}
 
 
 #pragma mark - Getters & Setters
