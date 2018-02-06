@@ -153,6 +153,43 @@
 
 
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    //判断滚动方向
+    if (scrollView.contentOffset.y>self.lastScrollViewContentOffsetY) {
+        self.isScrollDownward = YES;
+    }else{
+        self.isScrollDownward = NO;
+    }
+    self.lastScrollViewContentOffsetY = scrollView.contentOffset.y;
+    
+    //停止当前播放的
+    [self stopCurrentPlayingCell];
+    
+    //找出适合播放的并点亮
+//    [self filterShouldLightCellWithScrollDirection:self.isScrollDownward];
+}
+
+
+
+- (void)stopCurrentPlayingCell
+{
+    //避免第一次播放的时候被暂停
+    if (self.tableView.contentOffset.y<=0) {
+        return;
+    }
+    if (self.lastOrCurrentPlayIndex!=-1) {
+        KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastOrCurrentPlayIndex inSection:0]];
+        CGRect rect = [cell.videoBackView convertRect:cell.videoBackView.bounds toView:self];
+        CGFloat topSpacing = rect.origin.y;
+        CGFloat bottomSpacing = self.frame.size.height-rect.origin.y-rect.size.height;
+        //当视频播放部分移除可见区域1/3的时候暂停
+        if (topSpacing<-rect.size.height/3||bottomSpacing<-rect.size.height/3) {
+            self.lastOrCurrentPlayIndex  = -1;
+        }
+    }
+}
+
 
 #pragma mark - 其他方法
 - (void)stopVideoWithShouldToStopIndex:(NSInteger)shouldToStopIndex{
