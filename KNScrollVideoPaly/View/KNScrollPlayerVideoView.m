@@ -26,9 +26,22 @@
     BOOL rate;
     KNVideoPlayerView *_player;
 }
-
+///表格
 @property(nonatomic, strong) UITableView *tableView;
+///数据数组
 @property(nonatomic, strong) NSMutableArray *dataArray;
+///最后或当前的播放指数
+@property(nonatomic, assign) NSInteger lastOrCurrentPlayIndex;
+///最后或当前的亮指数;
+@property(nonatomic, assign) NSInteger lastOrCurrentLightIndex;
+
+@property(nonatomic, assign) NSInteger lastPlayerCell;
+
+///记录偏移值,用于判断上滑还是下滑
+@property(nonatomic, assign) CGFloat lastScrollViewContentOffsetY;
+///Yes-往下滑,NO-往上滑
+@property(nonatomic, assign) BOOL isScrollDownward;
+
 
 @end
 
