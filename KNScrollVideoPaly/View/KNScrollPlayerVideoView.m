@@ -45,8 +45,31 @@
 
 @end
 
+
+
 @implementation KNScrollPlayerVideoView
 
+
+#pragma mark - Getters & Setters
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, KNScreenHeight-64) style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.sectionFooterHeight = 1;
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, 0.001)];
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, 0.001)];
+        _tableView.separatorStyle = NO;
+    }
+    return _tableView;
+}
+
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 
 
 @end
