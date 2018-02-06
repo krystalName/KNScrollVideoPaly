@@ -170,6 +170,30 @@
     [self filterShouldLightCellWithScrollDirection:self.isScrollDownward];
 }
 
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+    if (velocity.y >0 || velocity.y < 0) {
+        rate = YES;
+    }else{
+        rate = NO;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (rate == YES) {
+        //停止的时候找出最合适的播放
+        NSLog(@"滑动停止时播放1");
+//        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if(decelerate == NO){
+        //停止的时候找出最合适的播放
+        NSLog(@"滑动停止时播放2");
+//        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
+    }
+}
 
 
 #pragma mark - 明暗控制
