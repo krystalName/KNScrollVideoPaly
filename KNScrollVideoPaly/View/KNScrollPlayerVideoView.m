@@ -195,6 +195,13 @@
     }
 }
 
+//setContentOffset: animation:
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    
+    [self playNext];
+}
+
+
 
 #pragma mark - 明暗控制
 - (void)filterShouldLightCellWithScrollDirection:(BOOL)isScrollDownward{
