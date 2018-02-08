@@ -21,7 +21,7 @@
 #define cellHeigh 320
 
 
-@interface KNScrollPlayerVideoView()<KNScrollPlayerDelegate>
+@interface KNScrollPlayerVideoView()<KNScrollPlayerDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     BOOL rate;
     KNVideoPlayerView *_player;
@@ -106,10 +106,10 @@
 
 #pragma mark - KNScrollPlayVideoCellDelegate
 
--(void)playerTapActionWithIsShouldToHideSubviews:(BOOL)isHide
-{
-    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastOrCurrentPlayIndex inSection:0]];
+- (void)playerTapActionWithIsShouldToHideSubviews:(BOOL)isHide{
+
 }
+
 
 -(void)playerButtonClick:(UIButton *)sneder
 {
@@ -183,7 +183,7 @@
     if (rate == YES) {
         //停止的时候找出最合适的播放
         NSLog(@"滑动停止时播放1");
-//        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
+        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
     }
 }
 
@@ -191,10 +191,78 @@
     if(decelerate == NO){
         //停止的时候找出最合适的播放
         NSLog(@"滑动停止时播放2");
-//        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
+        [self filterShouldPlayCellWithScrollDirection:self.isScrollDownward];
     }
 }
 
+
+#pragma mark - 播放暂停-播放视频
+- (void)filterShouldPlayCellWithScrollDirection:(BOOL)isScrollDownward
+{
+    
+    //顶部
+    if (self.tableView.contentOffset.y<=0) {
+        //其他的已经暂停播放
+        if (self.lastOrCurrentPlayIndex==-1) {
+            [self playVideoWithShouldToPlayIndex:0];
+        }else{
+            //第一个正在播放
+            if (self.lastOrCurrentPlayIndex==0) {
+                return;
+            }
+            //其他的没有暂停播放,先暂停其他的再播放第一个
+            [self stopVideoWithShouldToStopIndex:self.lastOrCurrentPlayIndex];
+            [self playVideoWithShouldToPlayIndex:0];
+        }
+        return;
+    }
+    
+    //底部
+    if (self.tableView.contentOffset.y+self.tableView.frame.size.height+1>=self.tableView.contentSize.height) {
+        //其他的已经暂停播放
+        if (self.lastOrCurrentPlayIndex==-1) {
+            [self playVideoWithShouldToPlayIndex:self.dataArray.count-1];
+        }else{
+            //最后一个正在播放
+            if (self.lastOrCurrentPlayIndex==self.dataArray.count-1) {
+                return;
+            }
+            //其他的没有暂停播放,先暂停其他的再播放最后一个
+            [self stopVideoWithShouldToStopIndex:self.lastOrCurrentPlayIndex];
+            [self playVideoWithShouldToPlayIndex:self.dataArray.count-1];
+        }
+        return;
+    }
+    
+    [self stopVideoWithShouldToStopIndex:self.lastPlayerCell];
+    
+    //中部(找出可见cell中最合适的一个进行播放)
+    NSArray *cellsArray = [self.tableView visibleCells];
+    NSArray *newArray = nil;
+    if (!isScrollDownward) {
+        newArray = [cellsArray reverseObjectEnumerator].allObjects;
+    }else{
+        newArray = cellsArray;
+    }
+    [newArray enumerateObjectsUsingBlock:^(KNScrollPlayerVideoCell *cell, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"播放视频 %ld",(long)cell.row);
+        
+        CGRect rect = [cell.videoBackView convertRect:cell.videoBackView.bounds toView:self];
+        CGFloat topSpacing = rect.origin.y;
+        CGFloat bottomSpacing = self.frame.size.height-rect.origin.y-rect.size.height;
+        if (topSpacing>=-rect.size.height/3&&bottomSpacing>=-rect.size.height/3) {
+            if (self.lastOrCurrentPlayIndex==-1) {
+                if (self.lastOrCurrentPlayIndex!=cell.row) {
+                    [self cellPlay:cell];
+                }
+            }
+            *stop = YES;
+        }else{
+            [self stopVideoWithShouldToStopIndex:cell.row];
+            
+        }
+    }];
+}
 //setContentOffset: animation:
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
     
