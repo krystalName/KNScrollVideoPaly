@@ -7,22 +7,32 @@
 //
 
 #import "ViewController.h"
-
+#import "KNScrollPlayerVideoView.h"
+#import <Masonry.h>
 @interface ViewController ()
 
+@property(nonatomic, strong) KNScrollPlayerVideoView *KNPlayerView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    [self.view addSubview:self.KNPlayerView];
+    [self.KNPlayerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(KNScrollPlayerVideoView *)KNPlayerView{
+    if (!_KNPlayerView) {
+        _KNPlayerView = [[KNScrollPlayerVideoView alloc]init];
+    }
+    return _KNPlayerView;
 }
 
 

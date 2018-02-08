@@ -85,7 +85,8 @@
     
     _model = model;
     [_bgimg sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"bgImage"]];
-    _nameLabel.text = model.title;
+    _contentLabel.text = model.title;
+    _nameLabel.text = @"你猜你猜？？";
     
 }
 

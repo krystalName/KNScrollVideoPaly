@@ -18,7 +18,7 @@
 
 ///接口
 #define videoListUrl @"http://c.3g.163.com/nc/video/list/VAP4BFR16/y/0-10.html"
-#define cellHeigh 320
+#define cellHeigh 350
 
 
 @interface KNScrollPlayerVideoView()<KNScrollPlayerDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -54,8 +54,8 @@
     self = [super init];
     if (self) {
         [self initData];
-      
-
+        [self initView];
+        [self fetchVideoListData];
     }
     return self;
 }
@@ -132,6 +132,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KNScrollPlayerVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([KNScrollPlayerVideoCell class])];
+    if (!cell) {
+        cell = [[KNScrollPlayerVideoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([KNScrollPlayerVideoCell class])];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     cell.row = indexPath.row;
@@ -430,7 +433,7 @@
 #pragma mark - Getters & Setters
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, KNScreenHeight-64) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, KNScreenHeight) style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionFooterHeight = 1;
