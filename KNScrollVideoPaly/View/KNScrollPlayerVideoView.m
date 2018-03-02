@@ -72,6 +72,10 @@
     [self addSubview:self.tableView];
     ///注册cell
     [self.tableView registerClass:[KNScrollPlayerVideoCell class] forCellReuseIdentifier:NSStringFromClass([KNScrollPlayerVideoCell class])];
+    ///设置状态栏为白色
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+
     
 }
 
@@ -103,6 +107,17 @@
         NSLog(@"%@", error);
     }];
 }
+
+
+
+- (void)setStartTimeValue:(CGFloat)startTimeValue
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    KNScrollPlayerVideoCell *cell = [self.tableView cellForRowAtIndexPath:path];
+    
+    [self cellPlay:cell];
+}
+
 
 #pragma mark - KNScrollPlayVideoCellDelegate
 
@@ -383,7 +398,7 @@
             
             if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height  == (int)weakSelf.tableView.contentSize.height ){
                 
-//                [weakSelf playNext];
+                [weakSelf playNext];
                 
             }else if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height + cellHeigh > (int)weakSelf.tableView.contentSize.height ){
                 
@@ -403,10 +418,10 @@
     _player.videoUrl = cell.model.video_Url;// item.mp4_url;
     [_player playerBindTableView:self.tableView currentIndexPath:path];
     _player.frame = cell.videoBackView.bounds;
-    [_player.player play];
     //在cell上加载播放器
     [cell.contentView addSubview:_player];
-    
+    [_player.player play];
+
     self.lastOrCurrentPlayIndex = cell.row;
     self.lastPlayerCell = cell.row;
     cell.topBlackView.hidden = YES;
@@ -433,7 +448,7 @@
 #pragma mark - Getters & Setters
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KNScreenWidth, KNScreenHeight) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, KNScreenWidth, KNScreenHeight - 20) style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionFooterHeight = 1;
