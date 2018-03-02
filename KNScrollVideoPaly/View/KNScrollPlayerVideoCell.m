@@ -132,6 +132,10 @@
         make.centerY.equalTo(self.bottomView);
         make.left.equalTo(self.headImageView.mas_right).offset(10);
     }];
+    
+    [self.topBlackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
 }
 
 
@@ -212,7 +216,7 @@
 -(UIView *)topBlackView{
     if (!_topBlackView) {
         _topBlackView = [[UIView alloc]init];
-        _topBlackView.backgroundColor = [UIColor clearColor];
+        _topBlackView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
     }
     return _topBlackView;
 }
