@@ -216,7 +216,8 @@
 -(UIView *)topBlackView{
     if (!_topBlackView) {
         _topBlackView = [[UIView alloc]init];
-        _topBlackView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        _topBlackView.backgroundColor = [UIColor blackColor];
+        _topBlackView.alpha = 0.6;
     }
     return _topBlackView;
 }
