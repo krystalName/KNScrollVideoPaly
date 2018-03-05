@@ -177,13 +177,10 @@ static CGFloat const playBtnSideLength = 60.0f;
     if (self.smallWinPlaying) return;
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (orientation == UIDeviceOrientationLandscapeLeft) {
-        //        NSLog(@"UIDeviceOrientationLandscapeLeft");
         [self orientationLeftFullScreen];
     }else if (orientation == UIDeviceOrientationLandscapeRight) {
-        //        NSLog(@"UIDeviceOrientationLandscapeRight");
         [self orientationRightFullScreen];
     }else if (orientation == UIDeviceOrientationPortrait) {
-        //        NSLog(@"UIDeviceOrientationPortrait");
         [self smallScreen];
     }
 }
