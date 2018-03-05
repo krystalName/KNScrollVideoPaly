@@ -323,6 +323,7 @@ static CGFloat const playBtnSideLength = 60.0f;
 #pragma mark - call back
 
 - (void)sliderValueChange:(KNVideoSlider *)slider {
+    
     self.progressLabel.text = [self timeFormatted:slider.value * self.totalDuration];
 }
 
@@ -343,6 +344,7 @@ static CGFloat const playBtnSideLength = 60.0f;
             self.playOrPauseBtn.selected = YES;
         }];
     }
+    
 }
 
 //Dragging the thumb to suspend video playback
