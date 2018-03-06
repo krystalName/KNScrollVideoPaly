@@ -4,3 +4,5 @@
 ## 上一张效果图
 
 ![](https://github.com/krystalName/KNScrollVideoPaly/blob/master/KNScrollVideoGif.gif)
+
++ 首先封装一个控制视频进度的滑杆。 和暂停播放按钮。视频时间显示
