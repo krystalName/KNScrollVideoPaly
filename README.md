@@ -67,6 +67,8 @@
 ```
 
 ```objc
+
+#pragma mark - 把封装好的播放器放到cell 上面
 -(void)cellPlay:(KNScrollPlayerVideoCell *)cell{
     
     if(self.dataArray.count<=0){
