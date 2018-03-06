@@ -5,4 +5,9 @@
 
 ![](https://github.com/krystalName/KNScrollVideoPaly/blob/master/KNScrollVideoGif.gif)
 
+### 说明一下demo的制作思路
 + 首先封装一个控制视频进度的滑杆。 和暂停播放按钮。视频时间显示
++ 再封装一个AVPlayer。和上面的控件结合起来。 形成了一个完整的播放器。
++ 再次封装一个tableView 里面放一个内容的View 来承载这个播放器。
++ 请求接口。获取到视频的url。 放入播放器。缓冲。播放
+
