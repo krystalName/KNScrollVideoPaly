@@ -66,6 +66,63 @@
 }
 ```
 
+```objc
+-(void)cellPlay:(KNScrollPlayerVideoCell *)cell{
+    
+    if(self.dataArray.count<=0){
+        return;
+    }
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:cell.row inSection:0];
+    
+    __weak typeof(self) weakSelf = self;
+    __weak KNVideoPlayerView *beplayer = _player;
+    if (_player && cell.row == self.lastPlayerCell) {
+        return;
+    }
+    
+    [_player removeFromSuperview];
+    
+    _player = [[KNVideoPlayerView alloc] init];
+    _player.completedPlayingBlock = ^(KNVideoPlayerView *player) {
+        
+        NSLog(@"两个比较 %f%d",weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height,(int)weakSelf.tableView.contentSize.height );
+        
+        if (weakSelf.lastPlayerCell != weakSelf.dataArray.count-1) {
+            
+            if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height  == (int)weakSelf.tableView.contentSize.height ){
+                
+                [weakSelf playNext];
+                
+            }else if(weakSelf.tableView.contentOffset.y  + weakSelf.tableView.frame.size.height + cellHeigh > (int)weakSelf.tableView.contentSize.height ){
+                
+                [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.tableView.contentSize.height  -weakSelf.tableView.frame.size.height) animated:YES];
+                
+                NSLog(@"滑动到最后一个视频 %f",weakSelf.tableView.contentSize.height  -weakSelf.tableView.frame.size.height);
+                
+            }else {
+                [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.tableView.contentOffset.y + cellHeigh ) animated:YES];
+                NSLog(@"滑动到下一个视频 %f",weakSelf.tableView.contentOffset.y + cellHeigh);
+            }
+        }
+        [beplayer setStatusBarHidden:NO];
+    };
+    
+    _player.slider.value = 0;
+    _player.videoUrl = cell.model.video_Url;// item.mp4_url;
+    [_player playerBindTableView:self.tableView currentIndexPath:path];
+    _player.frame = cell.videoBackView.bounds;
+    //在cell上加载播放器
+    [cell.contentView addSubview:_player];
+    [_player.player play];
+
+    self.lastOrCurrentPlayIndex = cell.row;
+    self.lastPlayerCell = cell.row;
+    cell.topBlackView.hidden = YES;
+}
+```
+
+
 
 
 
